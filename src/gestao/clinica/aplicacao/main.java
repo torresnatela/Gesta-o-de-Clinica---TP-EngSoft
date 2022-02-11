@@ -29,6 +29,7 @@ public class main {
 				+ "\n3. Agendar consulta"
 				+ "\n4. Ver lista de pacientes"
 				+ "\n5. Ver lista de medicos"
+				+ "\n6. Ver agenda"
 				+ "\n0. SAIR"
 				+ "\n\nDigite a opcao desejada: ");
 		
@@ -44,8 +45,10 @@ public class main {
 			String tel = leitor.next();
 			System.out.print("Digite o historico: ");
 			String hist = leitor.next();
+			System.out.print("Digite o ID: ");
+			int id = leitor.nextInt();
 
-		Paciente paciente = new Paciente(nome, cpf, tel, hist, 50);
+		Paciente paciente = new Paciente(nome, cpf, tel, hist, id);
 		listaPacientes.add(paciente);
 		System.out.print("\nPaciente cadastrado com sucesso!\n\n\n\n\n ");
 		
@@ -63,32 +66,59 @@ public class main {
 			String crm = leitor.next();
 			System.out.print("Digite a especializacao: ");
 			String especializacao = leitor.next();
+			System.out.print("Digite o ID: ");
+			int id = leitor.nextInt();
 
-		Medico medico = new Medico(nome, cpf, tel, crm, especializacao, 50);
+		Medico medico = new Medico(nome, cpf, tel, crm, especializacao, id);
 		listaMedicos.add(medico);
-		System.out.print("\nMedico cadastrado com sucesso!\n\n\n\n\n ");
+		System.out.print("\nMedico cadastrado com sucesso!\n\n ");
 		
 		}
 		else if(opcao == 3){
-			System.out.print("\n############# AGENDAR CONSULTA #############");
+			System.out.print("\n############# AGENDAR CONSULTA #############\n");
+			System.out.print("\nDigite o ID do paciente: ");
+			int idPaciente = leitor.nextInt();
+			System.out.print("Digite o ID do medico: ");
+			int idMedico = leitor.nextInt();
+			System.out.print("Digite a data desejada: ");
+			String data = leitor.next();
+
+			Consulta consulta = new Consulta(data, idMedico, idPaciente);
+			listaConsultas.add(consulta);
+			System.out.print("Consulta cadastrada com sucesso!\n\n ");
 		}
 		else if(opcao == 4){
-			System.out.print("\n############# LISTA DE PACIENTES #############");
+			System.out.print("\n############# LISTA DE PACIENTES #############\n\n");
+			for(int i = 0; i < listaPacientes.size(); i++) {
+				System.out.println("NOME: " + listaPacientes.get(i).getNome() + " | ID: " +
+						listaPacientes.get(i).getId() + "\n");
+			}
 		}
 		else if(opcao == 5){
-			System.out.print("\n############# LISTA DE MEDICOS #############");
+			System.out.print("\n############# LISTA DE MEDICOS #############\n");
+			for(int i = 0; i < listaMedicos.size(); i++) {
+				System.out.println("NOME: " + listaMedicos.get(i).getNome() + " | ID: " +
+						listaMedicos.get(i).getId() + "\n");
+			}
+		}
+		else if(opcao == 6){
+			System.out.print("\n############# VER AGENDA #############\n");
+			for(int i = 0; i < listaConsultas.size(); i++) {
+				System.out.println("PACIENTE: " + listaConsultas.get(i).getIdPaciente() + " | MEDICO: " +
+						listaConsultas.get(i).getIdMedico() + " | DATA: " + listaConsultas.get(i).getData() + "\n");
+			}
 		}
 		else if(opcao == 0){
-			System.out.print("\n############# VOLTE SEMPRE #############");
+			System.out.print("\n############# VOLTE SEMPRE #############\n");
 		}
 		else {
-			System.out.print("\n############# OPCAO INVALIDA #############");
+			System.out.print("\n############# OPCAO INVALIDA #############\n");
 		}
 		
 		}
 		
 		
-		
+		/*
 		//Criando um paciente
 		Paciente pacienteTeste = new Paciente("Gabriel", "14067737602", "31993410214", "Diabetico, cardiopata, idiota", 0);
 		Paciente pacienteTeste2 = new Paciente("Luis", "14667737602", "31993410214", "Diabetico, cardiopata, idiota", 1);
@@ -115,7 +145,7 @@ public class main {
 		//Liberação do resultado do exame.
 		//listaExames.get(0).LiberarExame("98mg");
 		
-		/*
+		
 		System.out.print("\n\n\n");
 		System.out.print("----------Teste de visualizar Exames-----------\n");
 		//Visualização dos dados do exame.

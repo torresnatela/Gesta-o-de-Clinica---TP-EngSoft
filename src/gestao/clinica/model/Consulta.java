@@ -15,6 +15,16 @@ public class Consulta {
 	public void setId_paciente(int id_paciente) {
 		this.id_paciente = id_paciente;
 	}
+
+	public int getIdMedico() {
+		return id_medico;
+	}	
+	public int getIdPaciente() {
+		return id_paciente;
+	}
+	public String getData() {
+		return data;
+	}
 	
 	public Consulta(String data, int id_medico, int id_paciente) {
 		
