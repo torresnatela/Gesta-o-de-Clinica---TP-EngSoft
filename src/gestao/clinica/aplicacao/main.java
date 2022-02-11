@@ -7,6 +7,7 @@ import gestao.clinica.model.Exame;
 import gestao.clinica.model.Medico;
 import gestao.clinica.model.Paciente;
 import gestao.clinica.model.Pessoa;
+import java.util.Scanner;
 
 public class main {
 
@@ -17,6 +18,74 @@ public class main {
 		ArrayList<Medico> listaMedicos = new ArrayList<>();
 		ArrayList<Paciente> listaPacientes = new ArrayList<>();
 		ArrayList<Exame> listaExames = new ArrayList<>();
+				
+		Scanner leitor = new Scanner(System.in);
+		int opcao = 10;
+		
+		while(opcao != 0) {
+		System.out.print("############# CLINICA MEDICA #############"
+				+ "\n1. Cadastrar paciente"
+				+ "\n2. Cadastrar medico"
+				+ "\n3. Agendar consulta"
+				+ "\n4. Ver lista de pacientes"
+				+ "\n5. Ver lista de medicos"
+				+ "\n0. SAIR"
+				+ "\n\nDigite a opcao desejada: ");
+		
+		opcao = leitor.nextInt();
+		
+		if(opcao == 1){
+			System.out.print("\n############# CADASTRAR PACIENTE #############\n");
+			System.out.print("\nDigite o nome: ");
+			String nome = leitor.next();
+			System.out.print("Digite o CPF: ");
+			String cpf = leitor.next();
+			System.out.print("Digite o telefone: ");
+			String tel = leitor.next();
+			System.out.print("Digite o historico: ");
+			String hist = leitor.next();
+
+		Paciente paciente = new Paciente(nome, cpf, tel, hist, 50);
+		listaPacientes.add(paciente);
+		System.out.print("\nPaciente cadastrado com sucesso!\n\n\n\n\n ");
+		
+		}
+		else if(opcao == 2){
+			System.out.print("\n############# CADASTRAR MEDICO #############\n");
+
+			System.out.print("\nDigite o nome: ");
+			String nome = leitor.next();
+			System.out.print("Digite o CPF: ");
+			String cpf = leitor.next();
+			System.out.print("Digite o telefone: ");
+			String tel = leitor.next();
+			System.out.print("Digite o crm: ");
+			String crm = leitor.next();
+			System.out.print("Digite a especializacao: ");
+			String especializacao = leitor.next();
+
+		Medico medico = new Medico(nome, cpf, tel, crm, especializacao, 50);
+		listaMedicos.add(medico);
+		System.out.print("\nMedico cadastrado com sucesso!\n\n\n\n\n ");
+		
+		}
+		else if(opcao == 3){
+			System.out.print("\n############# AGENDAR CONSULTA #############");
+		}
+		else if(opcao == 4){
+			System.out.print("\n############# LISTA DE PACIENTES #############");
+		}
+		else if(opcao == 5){
+			System.out.print("\n############# LISTA DE MEDICOS #############");
+		}
+		else if(opcao == 0){
+			System.out.print("\n############# VOLTE SEMPRE #############");
+		}
+		else {
+			System.out.print("\n############# OPCAO INVALIDA #############");
+		}
+		
+		}
 		
 		
 		
@@ -44,8 +113,9 @@ public class main {
 		listaMedicos.get(0).arquivarExame("Exame de Urina", 1, listaExames);
 		
 		//Liberação do resultado do exame.
-		listaExames.get(0).LiberarExame("98mg");
+		//listaExames.get(0).LiberarExame("98mg");
 		
+		/*
 		System.out.print("\n\n\n");
 		System.out.print("----------Teste de visualizar Exames-----------\n");
 		//Visualização dos dados do exame.
@@ -56,7 +126,7 @@ public class main {
 		System.out.print("---------Teste de visualizar consultas agendadas------------\n");
 		//Visualizar todas as consultas de um médico.
 		listaMedicos.get(0).visualizarConsultas();
-		
+		*/
 	}
 	
 }
