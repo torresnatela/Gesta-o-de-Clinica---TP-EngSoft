@@ -1,4 +1,4 @@
-package gestao.clinica.aplicacao;
+package gestao.clinica.view;
 
 import java.util.ArrayList;
 
