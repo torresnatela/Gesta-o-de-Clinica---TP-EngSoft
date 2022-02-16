@@ -40,29 +40,6 @@ public class Medico extends Pessoa{
 		this.crm = crm;
 		this.especializacao = especializacao;
 	}
-	
-	public void arquivarExame(String nomeExame, int id_paciente ,ArrayList<Exame> listaExames) {
-		
-		Exame exame = new Exame(nomeExame, id_paciente);
-		listaExames.add(exame);
-		
-	}
-	
-	public boolean visualizarConsultas() {
-		
-		if (this.consultasAgendadas.size() > 1) {
-			
-			for(int i = 0; i < this.consultasAgendadas.size(); i++) {
-				
-				System.out.print("Consulta: " + i + "\n");
-				System.out.print("Data da Consulta: " + this.consultasAgendadas.get(i).data + "\n");
-				System.out.print("ID do Paciente: " + this.consultasAgendadas.get(i).id_paciente + "\n");
-	
-			} return true;
-		}
-		return false;
-			
-	}
 
 
 }

@@ -2,6 +2,9 @@ package gestao.clinica.view;
 
 import java.util.ArrayList;
 
+import gestao.clinica.controller.MainControl;
+import gestao.clinica.controller.MedicoControl;
+import gestao.clinica.controller.PacienteControl;
 import gestao.clinica.model.Consulta;
 import gestao.clinica.model.Exame;
 import gestao.clinica.model.Medico;
@@ -13,14 +16,13 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		//Listas de Medicos, pacientes e consultas para programar.
-		ArrayList<Consulta> listaConsultas = new ArrayList<>();
-		ArrayList<Medico> listaMedicos = new ArrayList<>();
-		ArrayList<Paciente> listaPacientes = new ArrayList<>();
-		ArrayList<Exame> listaExames = new ArrayList<>();
-				
+		PacienteControl controller_paciente = new PacienteControl();
+		MedicoControl controller_medico = new MedicoControl();
+		MainControl controller_main = new MainControl();
+		
+		
 		Scanner leitor = new Scanner(System.in);
-		int opcao = 10, idP = 0, idM = 0;
+		int opcao = 10;
 		
 		while(opcao != 0) {
 		System.out.print("############# CLINICA MEDICA #############"
@@ -46,8 +48,9 @@ public class main {
 			System.out.print("Digite o historico: ");
 			String hist = leitor.next();
 
-		Paciente paciente = new Paciente(nome, cpf, tel, hist, ++idP);
-		listaPacientes.add(paciente);
+		
+		controller_paciente.cadastroPaciente(nome, cpf, tel, hist);
+			
 		System.out.print("\nPaciente cadastrado com sucesso!\n\n\n\n\n ");
 		
 		}
@@ -65,8 +68,8 @@ public class main {
 			System.out.print("Digite a especializacao: ");
 			String especializacao = leitor.next();
 
-		Medico medico = new Medico(nome, cpf, tel, crm, especializacao, ++idM);
-		listaMedicos.add(medico);
+		controller_medico.cadastroMedico(nome, cpf, tel, crm, especializacao);
+		
 		System.out.print("\nMedico cadastrado com sucesso!\n\n ");
 		
 		}
@@ -79,34 +82,34 @@ public class main {
 			System.out.print("Digite a data desejada: ");
 			String data = leitor.next();
 
-			Consulta consulta = new Consulta(data, idMedico, idPaciente);
-			listaConsultas.add(consulta);
+			controller_main.agendarConsulta(data, idMedico, idPaciente);
+			
 			System.out.print("Consulta cadastrada com sucesso!\n\n ");
 		}
+		
 		else if(opcao == 4){
 			System.out.print("\n############# LISTA DE PACIENTES #############\n\n");
-			for(int i = 0; i < listaPacientes.size(); i++) {
-				System.out.println("NOME: " + listaPacientes.get(i).getNome() + " | ID: " +
-						listaPacientes.get(i).getId() + "\n");
-			}
+			
+			controller_paciente.listaPacientes();
+			
 		}
+		
 		else if(opcao == 5){
 			System.out.print("\n############# LISTA DE MEDICOS #############\n");
-			for(int i = 0; i < listaMedicos.size(); i++) {
-				System.out.println("NOME: " + listaMedicos.get(i).getNome() + " | ID: " +
-						listaMedicos.get(i).getId() + "\n");
-			}
+			controller_medico.listarMedicos();
 		}
+		
 		else if(opcao == 6){
 			System.out.print("\n############# VER AGENDA #############\n");
-			for(int i = 0; i < listaConsultas.size(); i++) {
-				System.out.println("PACIENTE: " + listaConsultas.get(i).getIdPaciente() + " | MEDICO: " +
-						listaConsultas.get(i).getIdMedico() + " | DATA: " + listaConsultas.get(i).getData() + "\n");
-			}
+			controller_main.listarConsultas();
+			
+			
 		}
+		
 		else if(opcao == 0){
 			System.out.print("\n############# VOLTE SEMPRE #############\n");
 		}
+		
 		else {
 			System.out.print("\n############# OPCAO INVALIDA #############\n");
 		}
