@@ -34,8 +34,6 @@ public class Medico extends Pessoa{
 		this.setId(id);
 		
 	}
-
-	
 	
 	public void alteraDados(String crm, String especializacao) {
 		
@@ -50,16 +48,19 @@ public class Medico extends Pessoa{
 		
 	}
 	
-	public void visualizarConsultas() {
+	public boolean visualizarConsultas() {
 		
-		
-		for(int i = 0; i < this.consultasAgendadas.size(); i++) {
+		if (this.consultasAgendadas.size() > 1) {
 			
-			System.out.print("Consulta: " + i + "\n");
-			System.out.print("Data da Consulta: " + this.consultasAgendadas.get(i).data + "\n");
-			System.out.print("ID do Paciente: " + this.consultasAgendadas.get(i).id_paciente + "\n");
-
+			for(int i = 0; i < this.consultasAgendadas.size(); i++) {
+				
+				System.out.print("Consulta: " + i + "\n");
+				System.out.print("Data da Consulta: " + this.consultasAgendadas.get(i).data + "\n");
+				System.out.print("ID do Paciente: " + this.consultasAgendadas.get(i).id_paciente + "\n");
+	
+			} return true;
 		}
+		return false;
 			
 	}
 

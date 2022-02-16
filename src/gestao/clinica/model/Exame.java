@@ -25,16 +25,14 @@ public class Exame {
 		
 	}
 	
-	public void visualizarExame(){
+	public String visualizarExame(){
 		
-		if(this.exameDisponivel == true) {
-			System.out.print("Nome do Exame:" + this.nomeExame + "\n");
-			System.out.print("Resultado do Exame:" + this.resultado + "\n");
+		if(this.exameDisponivel) {
+			
+			return("Nome do Exame:" + this.nomeExame + "\n"
+					+ "Resultado do Exame:" + this.resultado);
 		}
-		else {
-			System.out.print("O resultado do seu exame ainda não está disponivel \n");
-		}
-		
+			return ("O resultado do seu exame ainda não está disponivel");
 	}
 	
 	

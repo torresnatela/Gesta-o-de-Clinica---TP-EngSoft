@@ -6,6 +6,10 @@ public class Paciente extends Pessoa{
 	
 	protected String historico;
 	
+	public String getHistorico() {
+		return historico;
+	}
+	
 	public void alteraDados(String historico) {
 		
 		this.historico = historico;
@@ -29,7 +33,7 @@ public class Paciente extends Pessoa{
 		
 		//Atualiza as listas de usuarios.
 		listaConsultas.add(consulta);
-		listaMedico.get(id_medico).consultasAgendadas.add(consulta);
+//		listaMedico.get(id_medico).consultasAgendadas.add(consulta);
 		
 		this.consultasAgendadas.add(consulta);
 		
