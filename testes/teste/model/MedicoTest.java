@@ -8,22 +8,43 @@ import gestao.clinica.model.Medico;
 
 
 public class MedicoTest {
+	
+	String nome = "Ana";
+	String cpf = "12345678910";
+	String contato = "9999999999";
+	String crm = "10500";
+	String especializacao = "Psiquiatra";
+	int id = 2;
 
 	@Test
-	public void testArquivarExame() {
+	public void testAlteraCRM() {
 
-	    Medico medico = new Medico();
+	    Medico medico = new Medico(nome, cpf, contato, crm, especializacao, id);
+	    
+	    medico.alteraDados("40100", "Anestesista");
 
-	    medico.arquivarExame();
+	    assertEquals(medico.getCrm(), "40100", "CRM alterada com sucesso");
+
+	}
+	
+	@Test
+	public void testAlteraEspecializacao() {
+
+	    Medico medico = new Medico(nome, cpf, contato, crm, especializacao, id);
+	    
+	    medico.alteraDados("40100", "Anestesista");
+
+	    assertEquals(medico.getEspecializacao(), "Anestesista", "Especializacao alterada com sucesso");
 
 	}
 
 	@Test
-	public void testVisualizarConsultas() {
+	public void testNaoPossuiConsultas() {
 
-	    Medico medico = new Medico();
+	    Medico medico = new Medico(nome, cpf, contato, crm, especializacao, id);
 
-	    medico.visualizarConsultas();
+	    assertFalse(medico.visualizarConsultas(), "Nao possui consultas");
+
 
 	}
 }
