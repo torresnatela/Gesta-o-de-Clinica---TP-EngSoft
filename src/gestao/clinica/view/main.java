@@ -20,7 +20,7 @@ public class main {
 		ArrayList<Exame> listaExames = new ArrayList<>();
 				
 		Scanner leitor = new Scanner(System.in);
-		int opcao = 10;
+		int opcao = 10, idP = 0, idM = 0;
 		
 		while(opcao != 0) {
 		System.out.print("############# CLINICA MEDICA #############"
@@ -45,10 +45,8 @@ public class main {
 			String tel = leitor.next();
 			System.out.print("Digite o historico: ");
 			String hist = leitor.next();
-			System.out.print("Digite o ID: ");
-			int id = leitor.nextInt();
 
-		Paciente paciente = new Paciente(nome, cpf, tel, hist, id);
+		Paciente paciente = new Paciente(nome, cpf, tel, hist, ++idP);
 		listaPacientes.add(paciente);
 		System.out.print("\nPaciente cadastrado com sucesso!\n\n\n\n\n ");
 		
@@ -66,10 +64,8 @@ public class main {
 			String crm = leitor.next();
 			System.out.print("Digite a especializacao: ");
 			String especializacao = leitor.next();
-			System.out.print("Digite o ID: ");
-			int id = leitor.nextInt();
 
-		Medico medico = new Medico(nome, cpf, tel, crm, especializacao, id);
+		Medico medico = new Medico(nome, cpf, tel, crm, especializacao, ++idM);
 		listaMedicos.add(medico);
 		System.out.print("\nMedico cadastrado com sucesso!\n\n ");
 		
