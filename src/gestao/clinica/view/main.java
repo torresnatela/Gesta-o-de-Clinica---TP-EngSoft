@@ -5,11 +5,6 @@ import java.util.ArrayList;
 import gestao.clinica.controller.MainControl;
 import gestao.clinica.controller.MedicoControl;
 import gestao.clinica.controller.PacienteControl;
-import gestao.clinica.model.Consulta;
-import gestao.clinica.model.Exame;
-import gestao.clinica.model.Medico;
-import gestao.clinica.model.Paciente;
-import gestao.clinica.model.Pessoa;
 import java.util.Scanner;
 
 public class main {
