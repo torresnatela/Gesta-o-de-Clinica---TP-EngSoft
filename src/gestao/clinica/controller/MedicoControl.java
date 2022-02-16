@@ -24,6 +24,7 @@ public class MedicoControl {
 
 		Medico aux = new Medico(nome, cpf, contato, crm, especializacao, this.id);
 		listaMedicos.add(aux);
+		this.id++;
 		
 	}
 	

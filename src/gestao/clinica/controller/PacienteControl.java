@@ -26,7 +26,7 @@ public class PacienteControl {
 		
 		listaPacientes.add(aux);
 		
-		id++;
+		this.id++;
 	
 	}
 	
